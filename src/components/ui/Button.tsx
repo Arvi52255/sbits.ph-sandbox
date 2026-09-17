@@ -11,16 +11,22 @@ import { ButtonHTMLAttributes, ReactNode } from 'react';
  * Variants map directly to the locked brand palette. `teal` variant uses
  * white text on a teal background specifically because teal-on-white
  * text fails WCAG AA (see tailwind.config.ts comment) — background+white
- * text is one of the approved safe uses.
+ * text is one of the approved safe uses. `outline-light` is a separate
+ * variant (not an override of `outline` via className) because this
+ * project has no tailwind-merge/clsx, so conflicting border/text-color
+ * utilities passed in via className aren't guaranteed to win over the
+ * variant's own classes — a dedicated variant is the reliable way to get
+ * a light outline button for use on the dark/gradient Hero section.
  */
 
-type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'teal';
+type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'outline-light' | 'teal';
 type ButtonSize = 'sm' | 'md' | 'lg';
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary: 'bg-brand-red text-white hover:bg-brand-red-dark',
   secondary: 'bg-brand-charcoal text-white hover:bg-black',
   outline: 'border border-brand-charcoal text-brand-charcoal hover:bg-gray-50',
+  'outline-light': 'border border-white text-white hover:bg-white/10',
   teal: 'bg-brand-teal text-white hover:bg-brand-teal-dark',
 };
 

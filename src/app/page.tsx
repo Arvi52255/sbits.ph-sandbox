@@ -1,6 +1,7 @@
 import Hero from "@/components/Hero";
 import { ServiceCard } from "@/components/content/ServiceCard";
 import { PartnerGrid } from "@/components/content/PartnerGrid";
+import { Button } from "@/components/ui/Button";
 import { getServices } from "@/lib/content/services";
 
 export default function Home() {
@@ -12,7 +13,7 @@ export default function Home() {
       <Hero />
 
       {/* Services overview */}
-      <section className="py-16 px-6 md:px-12">
+      <section id="services" className="py-16 px-6 md:px-12 scroll-mt-20">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold text-brand-charcoal mb-2">
             How we help
@@ -52,13 +53,9 @@ export default function Home() {
           <p className="mb-8 text-gray-300">
             Talk to our team and find out how SBITS can support your business.
           </p>
-          
-          <a
-            href="/contact"
-            className="inline-block bg-brand-red text-white font-semibold px-8 py-3 rounded-full hover:bg-brand-red-dark transition"
-          >
+          <Button href="/contact" variant="primary" size="lg">
             Get in touch
-          </a>
+          </Button>
         </div>
       </section>
     </main>

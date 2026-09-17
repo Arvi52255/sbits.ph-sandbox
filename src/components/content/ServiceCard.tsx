@@ -1,8 +1,8 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import { Service } from '@/types/content';
 import { Card } from '../ui/Card';
 import { Badge } from '../ui/Badge';
+import { Button } from '../ui/Button';
 
 /**
  * ServiceCard
@@ -42,12 +42,11 @@ export function ServiceCard({ service }: ServiceCardProps) {
         ))}
       </ul>
 
-      <Link
-        href={`/services/${service.slug}`}
-        className="mt-4 text-sm font-semibold text-brand-red hover:text-brand-red-dark"
-      >
-        Learn more →
-      </Link>
+      <div className="mt-auto pt-4">
+        <Button href={`/services/${service.slug}`} variant="outline" size="sm">
+          Learn more →
+        </Button>
+      </div>
     </Card>
   );
 }

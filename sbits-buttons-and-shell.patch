@@ -1,0 +1,162 @@
+diff --git a/src/app/layout.tsx b/src/app/layout.tsx
+index cbf28c2..a2a95b3 100644
+--- a/src/app/layout.tsx
++++ b/src/app/layout.tsx
+@@ -1,6 +1,7 @@
+ import type { Metadata } from "next";
+ import localFont from "next/font/local";
+ import "./globals.css";
++import { Layout } from "@/components/layout/Layout";
+ 
+ const geistSans = localFont({
+   src: "./fonts/GeistVF.woff",
+@@ -29,7 +30,7 @@ export default function RootLayout({
+       <body
+         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+       >
+-        {children}
++        <Layout>{children}</Layout>
+       </body>
+     </html>
+   );
+diff --git a/src/app/page.tsx b/src/app/page.tsx
+index 1f3160e..72b738b 100644
+--- a/src/app/page.tsx
++++ b/src/app/page.tsx
+@@ -1,6 +1,7 @@
+ import Hero from "@/components/Hero";
+ import { ServiceCard } from "@/components/content/ServiceCard";
+ import { PartnerGrid } from "@/components/content/PartnerGrid";
++import { Button } from "@/components/ui/Button";
+ import { getServices } from "@/lib/content/services";
+ 
+ export default function Home() {
+@@ -12,7 +13,7 @@ export default function Home() {
+       <Hero />
+ 
+       {/* Services overview */}
+-      <section className="py-16 px-6 md:px-12">
++      <section id="services" className="py-16 px-6 md:px-12 scroll-mt-20">
+         <div className="max-w-6xl mx-auto">
+           <h2 className="text-3xl font-bold text-brand-charcoal mb-2">
+             How we help
+@@ -52,13 +53,9 @@ export default function Home() {
+           <p className="mb-8 text-gray-300">
+             Talk to our team and find out how SBITS can support your business.
+           </p>
+-          
+-          <a
+-            href="/contact"
+-            className="inline-block bg-brand-red text-white font-semibold px-8 py-3 rounded-full hover:bg-brand-red-dark transition"
+-          >
++          <Button href="/contact" variant="primary" size="lg">
+             Get in touch
+-          </a>
++          </Button>
+         </div>
+       </section>
+     </main>
+diff --git a/src/components/Hero.tsx b/src/components/Hero.tsx
+index c42d819..156e292 100644
+--- a/src/components/Hero.tsx
++++ b/src/components/Hero.tsx
+@@ -1,12 +1,13 @@
+ // src/components/Hero.tsx
+ import { siteSettings } from "@/mock/siteSettings";
++import { Button } from "./ui/Button";
+ 
+ export default function Hero() {
+-  const { title, subtitle, backgroundImage } = siteSettings.hero;
++  const { title, subtitle, backgroundImage, ctaText, ctaLink } = siteSettings.hero;
+ 
+   return (
+     <section
+-      className={`relative flex items-center justify-center min-h-[480px] px-6 ${
++      className={`relative flex items-center justify-center min-h-[520px] px-6 py-20 ${
+         !backgroundImage ? "bg-gradient-to-br from-brand-blue via-brand-teal to-brand-charcoal" : ""
+       }`}
+       style={
+@@ -17,8 +18,19 @@ export default function Hero() {
+     >
+       {backgroundImage && <div className="absolute inset-0 bg-black/40" />}
+       <div className="relative z-10 text-center text-white max-w-2xl">
+-        <h1 className="text-4xl font-bold mb-4">{title}</h1>
+-        <p className="text-lg">{subtitle}</p>
++        <h1 className="text-4xl md:text-5xl font-bold mb-4">{title}</h1>
++        <p className="text-lg text-white/90">{subtitle}</p>
++
++        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
++          {ctaText && ctaLink && (
++            <Button href={ctaLink} variant="primary" size="lg">
++              {ctaText}
++            </Button>
++          )}
++          <Button href="#services" variant="outline-light" size="lg">
++            See our services
++          </Button>
++        </div>
+       </div>
+     </section>
+   );
+diff --git a/src/components/content/ServiceCard.tsx b/src/components/content/ServiceCard.tsx
+index 28406a2..bd28a7a 100644
+--- a/src/components/content/ServiceCard.tsx
++++ b/src/components/content/ServiceCard.tsx
+@@ -1,8 +1,8 @@
+ import Image from 'next/image';
+-import Link from 'next/link';
+ import { Service } from '@/types/content';
+ import { Card } from '../ui/Card';
+ import { Badge } from '../ui/Badge';
++import { Button } from '../ui/Button';
+ 
+ /**
+  * ServiceCard
+@@ -42,12 +42,11 @@ export function ServiceCard({ service }: ServiceCardProps) {
+         ))}
+       </ul>
+ 
+-      <Link
+-        href={`/services/${service.slug}`}
+-        className="mt-4 text-sm font-semibold text-brand-red hover:text-brand-red-dark"
+-      >
+-        Learn more →
+-      </Link>
++      <div className="mt-auto pt-4">
++        <Button href={`/services/${service.slug}`} variant="outline" size="sm">
++          Learn more →
++        </Button>
++      </div>
+     </Card>
+   );
+ }
+\ No newline at end of file
+diff --git a/src/components/ui/Button.tsx b/src/components/ui/Button.tsx
+index 18ea8fc..b852a7d 100644
+--- a/src/components/ui/Button.tsx
++++ b/src/components/ui/Button.tsx
+@@ -11,16 +11,22 @@ import { ButtonHTMLAttributes, ReactNode } from 'react';
+  * Variants map directly to the locked brand palette. `teal` variant uses
+  * white text on a teal background specifically because teal-on-white
+  * text fails WCAG AA (see tailwind.config.ts comment) — background+white
+- * text is one of the approved safe uses.
++ * text is one of the approved safe uses. `outline-light` is a separate
++ * variant (not an override of `outline` via className) because this
++ * project has no tailwind-merge/clsx, so conflicting border/text-color
++ * utilities passed in via className aren't guaranteed to win over the
++ * variant's own classes — a dedicated variant is the reliable way to get
++ * a light outline button for use on the dark/gradient Hero section.
+  */
+ 
+-type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'teal';
++type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'outline-light' | 'teal';
+ type ButtonSize = 'sm' | 'md' | 'lg';
+ 
+ const variantClasses: Record<ButtonVariant, string> = {
+   primary: 'bg-brand-red text-white hover:bg-brand-red-dark',
+   secondary: 'bg-brand-charcoal text-white hover:bg-black',
+   outline: 'border border-brand-charcoal text-brand-charcoal hover:bg-gray-50',
++  'outline-light': 'border border-white text-white hover:bg-white/10',
+   teal: 'bg-brand-teal text-white hover:bg-brand-teal-dark',
+ };
+ 
