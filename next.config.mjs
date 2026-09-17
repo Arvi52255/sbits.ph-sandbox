@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  reactStrictMode: true,
   images: {
     remotePatterns: [
       {
@@ -7,7 +8,6 @@ const nextConfig = {
         hostname: "cdn.sanity.io",
       },
     ],
-    formats: ["image/avif", "image/webp"],
   },
 };
 
