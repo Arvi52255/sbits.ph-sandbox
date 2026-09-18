@@ -1,8 +1,8 @@
 import { LinkButton } from "@/components/Button";
 import { NetworkMotif } from "@/components/NetworkMotif";
-import { SectionHeading, ServiceCard, IndustryCard, PartnerBadge } from "@/components/Bits";
+import { SectionHeading, ServiceCard, PartnerBadge } from "@/components/Bits";
 import { LogoMarquee } from "@/components/content/LogoMarquee";
-import { services, industries, partners, site } from "@/lib/site";
+import { services, partners, site } from "@/lib/site";
 
 export default function HomePage() {
   return (
@@ -52,7 +52,7 @@ export default function HomePage() {
           <SectionHeading
             eyebrow="What we do"
             title="Six ways we keep your business running."
-            description="From the network cable to the cloud dashboard, we cover the parts of IT that businesses tend to outsource — and the ones they wish they had outsourced sooner."
+            description="From the network cable to the cloud dashboard, we cover the parts of IT that businesses tend to outsource, and the ones they wish they had outsourced sooner."
           />
           <LinkButton href="/services" variant="ghost" className="shrink-0">
             View all services
@@ -62,21 +62,6 @@ export default function HomePage() {
           {services.map((s, i) => (
             <ServiceCard key={s.slug} service={s} index={i} />
           ))}
-        </div>
-      </section>
-
-      {/* Industries */}
-      <section className="bg-slate-50 py-20 sm:py-28">
-        <div className="container-page">
-          <SectionHeading
-            eyebrow="Who we work with"
-            title="Built for the businesses that run the Philippines day to day."
-          />
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {industries.map((ind) => (
-              <IndustryCard key={ind.name} industry={ind} />
-            ))}
-          </div>
         </div>
       </section>
 

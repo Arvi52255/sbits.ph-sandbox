@@ -6,17 +6,17 @@
 
 export const site = {
   name: "SBITS",
-  fullName: "SBITS — Smart Business IT Solutions",
+  fullName: "SKWER BACE INFORMATION TECHNOLOGY SOLUTIONS",
   tagline: "IT infrastructure, software, and support built for Philippine businesses.",
   description:
-    "SBITS designs, builds, and supports the IT systems Philippine businesses run on — networks, software, cloud, and helpdesk support, delivered by a local team that answers the phone.",
+    "Our IT Products, Solutions and Services are related to Structured Cabling, Network and Telephony, Servers & Storage, ICT Security, Cloud Solution, Computers, Software Licenses and Auxiliary Solutions.",
   url: "https://sbits.ph",
-  email: "hello@sbits.ph",
+  email: "sales@sbits.ph",
   supportEmail: "support@sbits.ph",
-  phone: "+63 2 8123 4567",
-  phoneHref: "+6328123457",
-  mobile: "+63 917 000 0000",
-  address: "5th Floor, Cityland Pasong Tamo Tower, Makati City, Metro Manila, Philippines",
+  phone: "+63 917 157 2135",
+  phoneHref: "+63 981 009 0000",
+  mobile: "++63 981 009 0000",
+  address: "2004 C. Arellano., Zone 063, Brgy. 627 Sampaloc, Manila, Philippines",
   hours: "Mon–Fri, 8:00 AM–6:00 PM (PHT) · 24/7 for Managed Support clients",
   social: {
     facebook: "https://facebook.com/sbits.ph",
@@ -63,7 +63,7 @@ export const services: Service[] = [
     name: "Network & Infrastructure",
     short: "Wired, wireless, and server infrastructure that stays up.",
     description:
-      "Structured cabling, business Wi-Fi, firewalls, and server rooms designed for the way your business actually operates — from a single office to multi-branch setups.",
+      "Structured cabling, business Wi-Fi, firewalls, and server rooms designed for the way your business actually operates, from a single office to multi-branch setups.",
     bullets: [
       "Network design, cabling, and Wi-Fi rollouts",
       "Firewall, VPN, and site-to-site connectivity",
@@ -89,7 +89,7 @@ export const services: Service[] = [
     name: "Software & Web Development",
     short: "Custom web apps, internal tools, and business systems.",
     description:
-      "From customer-facing websites to internal tools that replace spreadsheets — built, deployed, and maintained by the same team that supports your infrastructure.",
+      "From customer-facing websites to internal tools that replace spreadsheets, built, deployed, and maintained by the same team that supports your infrastructure.",
     bullets: [
       "Business websites and web applications",
       "Internal tools, dashboards, and integrations",

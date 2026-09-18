@@ -7,8 +7,7 @@ import { services } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Managed IT support, networking, cloud, software development, cybersecurity, and IT consulting for Philippine businesses.",
-};
+    "Our IT Products, Solutions and Services are related to Structured Cabling, Network and Telephony, Servers & Storage, ICT Security, Cloud Solution, Computers, Software Licenses and Auxiliary Solutions.",};
 
 export default function ServicesPage() {
   return (
@@ -18,7 +17,7 @@ export default function ServicesPage() {
           <SectionHeading
             eyebrow="Services"
             title="IT support that scales from one office to multiple branches."
-            description="Every engagement starts the same way: we look at what you already have, tell you honestly what needs fixing, and scope work around your budget — not a generic package."
+            description="Every engagement starts the same way: we look at what you already have, tell you honestly what needs fixing, and scope work around your budget, not a generic package."
           />
         </div>
       </section>
@@ -64,7 +63,7 @@ export default function ServicesPage() {
           <div>
             <h2 className="font-display text-3xl font-bold tracking-tight">Not sure which service you need?</h2>
             <p className="mt-3 max-w-lg text-slate-300">
-              Tell us what&apos;s going on and we&apos;ll point you in the right direction — no obligation.
+              Tell us what&apos;s going on and we&apos;ll point you in the right direction, no obligation.
             </p>
           </div>
           <LinkButton href="/contact" variant="primary" className="shrink-0">

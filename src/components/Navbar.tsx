@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { navLinks, site } from "@/lib/site";
@@ -15,8 +16,15 @@ export function Navbar() {
     <header className="sticky top-0 z-50 border-b border-slate-200 bg-paper/90 backdrop-blur">
       <div className="container-page flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center gap-2 focus-ring rounded" onClick={() => setOpen(false)}>
-          <span className="grid h-8 w-8 place-items-center rounded-md bg-ink text-sm font-bold text-white font-display">
-            S
+          <span className="grid h-9 w-9 shrink-0 place-items-center overflow-hidden rounded-md">
+            <Image
+              src="/images/sbits_logo/sbitsLogo.svg"
+              alt={`${site.name} logo`}
+              width={36}
+              height={36}
+              className="h-full w-full object-contain"
+              priority
+            />
           </span>
           <span className="font-display text-lg font-bold tracking-tight text-ink">{site.name}</span>
         </Link>

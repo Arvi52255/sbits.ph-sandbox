@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const partnerTiers = [
   {
     name: "Vendor & Technology Partners",
-    body: "We're certified or authorized resellers for the platforms behind most of our deployments — so licensing, support escalation, and warranty claims go through us, not a call center overseas.",
+    body: "We're certified or authorized resellers for the platforms behind most of our deployments, so licensing, support escalation, and warranty claims go through us, not a call center overseas.",
   },
   {
     name: "Referral Partners",

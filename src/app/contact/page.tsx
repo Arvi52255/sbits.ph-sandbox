@@ -4,7 +4,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Get in touch with SBITS — office address, phone, email, and support hours.",
+  description: "Get in touch with SBITS: office address, phone, email, and support hours.",
 };
 
 export default function ContactPage() {
@@ -19,7 +19,7 @@ export default function ContactPage() {
             <a href="/quote" className="focus-ring rounded font-medium text-signal">
               quote request form
             </a>{" "}
-            instead — it gets your request to the right engineer faster. For everything else, reach us here.
+            instead, it gets your request to the right engineer faster. For everything else, reach us here.
           </p>
 
           <dl className="mt-10 space-y-6 text-sm">

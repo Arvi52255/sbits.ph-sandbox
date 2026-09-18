@@ -40,7 +40,7 @@ export function ContactForm() {
       <div className="rounded-lg border border-circuit/30 bg-circuit/10 p-6">
         <p className="font-display text-lg font-semibold text-ink">Message sent.</p>
         <p className="mt-2 text-sm text-slate-600">
-          Thanks for reaching out — our team replies within one business day.
+          Thanks for reaching out. Our team replies within one business day.
         </p>
         <button
           className="focus-ring mt-4 text-sm font-medium text-signal"

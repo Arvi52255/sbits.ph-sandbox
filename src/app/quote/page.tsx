@@ -22,7 +22,7 @@ export default function QuotePage() {
             Tell us about your project.
           </h1>
           <p className="mt-4 max-w-md text-slate-600">
-            The more detail you give us, the more accurate the quote. We reply within one business day —
+            The more detail you give us, the more accurate the quote. We reply within one business day,
             usually sooner.
           </p>
 

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { navLinks, services, site } from "@/lib/site";
 
 export function Footer() {
@@ -7,8 +8,14 @@ export function Footer() {
       <div className="container-page grid gap-10 py-14 md:grid-cols-4">
         <div>
           <div className="flex items-center gap-2">
-            <span className="grid h-8 w-8 place-items-center rounded-md bg-white text-sm font-bold text-ink font-display">
-              S
+            <span className="grid h-9 w-9 shrink-0 place-items-center overflow-hidden rounded-md bg-white p-1">
+              <Image
+                src="/images/sbits_logo/sbitsLogo.svg"
+                alt={`${site.name} logo`}
+                width={28}
+                height={28}
+                className="h-full w-full object-contain"
+              />
             </span>
             <span className="font-display text-lg font-bold text-white">{site.name}</span>
           </div>
